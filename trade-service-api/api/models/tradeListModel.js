@@ -1,11 +1,12 @@
 'use strict';
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-
+const mongoose = require('mongoose'),
+  Schema = mongoose.Schema;
 
 var TradeSchema = new Schema({
   _id:{
-    type:Number
+    type:Number,
+    index:true,
+    unique:true
   },
   quantity: {
     type: Number,
@@ -54,6 +55,18 @@ var TradeSchema = new Schema({
     type:Number,
     required:'Please enter the price of the trade'
   }
+});
+
+var Counter = require('./counterModel');
+
+TradeSchema.pre('save', function(next) {
+  var doc = this;
+  Counter.findByIdAndUpdate({_id:'tradeSeqId'}, {$inc:{seq:1}}, {new:true}, (error, updatedCounter) =>   {
+      if(error)
+          return next(error);
+      doc._id = updatedCounter.seq;
+      next();
+  });
 });
 
 module.exports = mongoose.model('Trades', TradeSchema);
