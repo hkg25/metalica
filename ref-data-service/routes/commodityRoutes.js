@@ -21,4 +21,29 @@ router.post('/', function(req, res, next) {
     }).catch((err)=>res.status(400).send());
 });
 
+router.delete('/:code', function(req, res, next) {
+    Commodity.remove({code:req.params.code}).then((commodity)=>{
+        res.send({commodity});
+    }).catch((err)=>{
+        res.status(400).send();
+    });
+});
+
+router.patch('/:code', function(req, res, next) {
+    Commodity.findOneAndUpdate({code:req.params.code},req.body,{new:true}).then((commodity)=>{
+        res.send({commodity});
+    }).catch((err)=>{
+        res.status(400).send();
+    });
+});
+
+router.get('/:code', function(req, res, next) {
+    Commodity.findOne({code:req.params.code}).then((commodity)=>{
+        res.send({commodity});
+    }).catch((err)=>{
+        res.status(400).send();
+    });
+});
+
+
 module.exports = router;

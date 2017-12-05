@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var commodity = require('./routes/commodityRoutes');
 var counterparty = require('./routes/counterpartyRoutes');
+var location = require('./routes/locationRoutes');
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.use(cookieParser());
 
 app.use('/api/commodities', commodity);
 app.use('/api/counterparties', counterparty);
+app.use('/api/location', location);
 
 
 // catch 404 and forward to error handler
