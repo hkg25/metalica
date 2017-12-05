@@ -1,10 +1,5 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-
-var counterPartySchema = new Schema({
-  title:  String,
-  code: String
-});
+const mongoose = require('mongoose');
+const counterPartySchema = require("../models/refDataSchema")
 
 const CounterParty = mongoose.model("CounterParty",counterPartySchema);
 
