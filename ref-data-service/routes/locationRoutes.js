@@ -1,13 +1,13 @@
 require("../db/mongoose");
 var express = require('express');
 var router = express.Router();
-const {Commodity} = require("../models/commodity");
+const {Location} = require("../models/location");
 const _ = require("lodash");
 
 
 router.get('/', function(req, res, next) {
-    Commodity.find({}).then((commodities)=>{
-        res.send({commodities});
+  Location.find({}).then((locations)=>{
+        res.send({locations});
     }).catch((err)=>{
         res.status(400).send();
     });
@@ -15,31 +15,31 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     var body = _.pick(req.body,["title","code"]);
-    var commodity = new Commodity(body);
-    commodity.save().then((cmdtyObj)=>{
-        res.status(200).send(cmdtyObj);
+    var location = new Location(body);
+    location.save().then((locationObj)=>{
+        res.status(200).send(locationObj);
     }).catch((err)=>res.status(400).send());
 });
 
 router.delete('/:code', function(req, res, next) {
-    Commodity.remove({code:req.params.code}).then((commodity)=>{
-        res.send({commodity});
+    Location.remove({code:req.params.code}).then((location)=>{
+        res.send({location});
     }).catch((err)=>{
         res.status(400).send();
     });
 });
 
 router.patch('/:code', function(req, res, next) {
-    Commodity.findOneAndUpdate({code:req.params.code},req.body,{new:true}).then((commodity)=>{
-        res.send({commodity});
+    Location.findOneAndUpdate({code:req.params.code},req.body,{new:true}).then((location)=>{
+        res.send({location});
     }).catch((err)=>{
         res.status(400).send();
     });
 });
 
 router.get('/:code', function(req, res, next) {
-    Commodity.findOne({code:req.params.code}).then((commodity)=>{
-        res.send({commodity});
+  Location.findOne({code:req.params.code}).then((location)=>{
+        res.send({location});
     }).catch((err)=>{
         res.status(400).send();
     });
