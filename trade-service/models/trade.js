@@ -4,12 +4,11 @@ var Trade = mongoose.model('Trade',{
     qty:{
         type:Number,
         required:true,
-        minlength:1,
-        trim:true
+        minlength:1
     },
     tradeDate:{
         type:Number,
-        default:null
+        default:Date.now
     },
     status:{
         type:String,

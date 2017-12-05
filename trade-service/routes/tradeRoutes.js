@@ -6,10 +6,8 @@ const express = require('express'),
 const router = express.Router();
 
 router.post('/trades', function(req, res, next) {
-  var trade =  {
-    qty:50
-  };
-    //_.pick(req.body, ['qty','side']);
+  console.log(req.body);
+  var trade = new Trade(_.pick(req.body, ['qty','side']));
 
   trade.save().then((tradeObj) =>{
       res.send(tradeObj);
@@ -19,7 +17,7 @@ router.post('/trades', function(req, res, next) {
 });
 
 router.get('/trades', function(req, res, next) {
-  Trade.find().then((trades) =>{
+  Trade.find({}).then((trades) =>{
       res.send({trades});
   });
 });
