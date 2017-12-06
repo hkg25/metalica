@@ -1,6 +1,5 @@
 'use strict';
 
-
 var mongoose = require('mongoose'),
   Trade = mongoose.model('Trades');
 
@@ -12,9 +11,6 @@ exports.list_all_trades = function(req, res) {
   });
 };
 
-
-
-
 exports.create_a_trade = function(req, res) {
   var new_trade = new Trade(req.body);
   new_trade.save(function(err, trade) {
@@ -24,7 +20,6 @@ exports.create_a_trade = function(req, res) {
   });
 };
 
-
 exports.read_a_trade = function(req, res) {
   Trade.findById(req.params.tradeId, function(err, trade) {
     if (err)
@@ -33,7 +28,6 @@ exports.read_a_trade = function(req, res) {
   });
 };
 
-
 exports.update_a_trade = function(req, res) {
   Trade.findOneAndUpdate({_id: req.params.tradeId}, req.body, {new: true}, function(err, trade) {
     if (err)
@@ -41,7 +35,6 @@ exports.update_a_trade = function(req, res) {
     res.json(trade);
   });
 };
-
 
 exports.delete_a_trade = function(req, res) {
   Trade.remove({
