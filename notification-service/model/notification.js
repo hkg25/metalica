@@ -15,7 +15,7 @@ var notificationSchema = new Schema({
       minlength : 2,
     },
     id :{
-        type : Number,
+        type : Number
     }   
   });
 

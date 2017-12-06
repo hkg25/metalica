@@ -12,5 +12,5 @@ amqp.connect(RABBITMQ_URL, function (err, conn){
         ch.sendToQueue(QUEUE, new Buffer('Hello World!'));
         console.log(" [x] Sent 'Hello World!'");
     });
-//setTimeout(function() { conn.close(); process.exit(0) }, 500);
+    //setTimeout(function() { conn.close(); process.exit(0) }, 500);
 });

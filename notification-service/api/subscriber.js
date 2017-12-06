@@ -1,3 +1,4 @@
+require("../config/config");
 const amqp = require('amqplib/callback_api');
 const {save} = require("../service/notification-service");
 
@@ -8,7 +9,7 @@ amqp.connect(RABBITMQ_URL, function(err, conn) {
     //console.log("-------", conn);
     conn.createChannel(function(err, ch) {
        ch.assertQueue(QUEUE_NAME, {durable: false});
-       ch.prefetch(1);
+       //ch.prefetch(1);
        console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", QUEUE_NAME);
        ch.consume(QUEUE_NAME, function(msg) {
          console.log(" [x] Received %s", msg.content.toString());
