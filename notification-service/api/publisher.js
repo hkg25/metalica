@@ -1,3 +1,4 @@
+require("../config/config");
 const amqp = require('amqplib/callback_api');
 
 const RABBITMQ_URL = process.env.BROKER_URL;

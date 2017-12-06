@@ -4,13 +4,15 @@ var Schema = mongoose.Schema;
 var refDataSchema = new Schema({
     title:  {
       type : String,
-      required : true
+      required : "Title should not be empty",
+      unique : "Title should be unique"
     },
     code: {
       type : String,
-      required : true,
-      minlength:2,
-      unique : true    
+      required : "Code shoule not be empty",
+      minlength : 2,
+      unique : "Code should be unique",
+      uppercase : true    
     }
   });
 
