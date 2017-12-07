@@ -1,5 +1,5 @@
-const mongoose = require('mongoose'),
-MarketData = require("../model/market-data");
+const mongoose = require('mongoose');
+var MarketData = mongoose.model("MarketsData");
 
 
 var list_all_market_data = (req,res) =>{

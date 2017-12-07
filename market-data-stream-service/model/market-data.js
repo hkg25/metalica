@@ -2,15 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var marketDataSchema = new Schema({
-    maxPrice : {
-      type : Number,
-      required : true
-    },
-    minPrice : {
-      type : Number,
-      required : true
-    },
-    avgPrice : {
+    price : {
       type : Number,
       required : true
     },
@@ -18,12 +10,11 @@ var marketDataSchema = new Schema({
       type : String,
       required : true,
       minlength : 2,
-      trim : true,
-      uppercase : true
+      trim : true
     },
 
   });
 
   const MarketData = mongoose.model("MarketData",marketDataSchema);
-  
+
   module.exports = {MarketData};
