@@ -16,17 +16,17 @@ routes(app);
 
 app.listen(process.env.PORT, () =>{  
   console.log(`Market Data service is running on ${process.env.PORT}`);
-  // const announce = () => {
-  //   request.put(`${process.env.SERVICE_REGISTRY_ENDPOINT}/tradeService/${process.env.PORT}`, (err, response) =>{
-  //   if(err){
-  //     console.log(err);
-  //     console.log(`Error connecting to registry ${process.env.SERVICE_REGISTRY_ENDPOINT}`);
-  //     return;
-  //   }
-  //   console.log(response);
-  //   });
-  // }
+  const announce = () => {
+    request.put(`${process.env.SERVICE_REGISTRY_ENDPOINT}/marketService/${process.env.PORT}`, (err, response) =>{
+    if(err){
+      console.log(err);
+      console.log(`Error connecting to registry ${process.env.SERVICE_REGISTRY_ENDPOINT}`);
+      return;
+    }
+    console.log(response);
+    });
+  }
 
-  //    announce();
-  //    setInterval(announce, 15*1000);  
+  announce();
+  setInterval(announce, 15*1000);  
 });
