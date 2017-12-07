@@ -6,6 +6,7 @@ const request = require('superagent');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI);
+require('./model/market-data');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

@@ -11,10 +11,8 @@ var marketDataSchema = new Schema({
       required : true,
       minlength : 2,
       trim : true
-    },
+    }
 
   });
 
-  const MarketData = mongoose.model("MarketData",marketDataSchema);
-
-  module.exports = {MarketData};
+ module.exports = mongoose.model("MarketData",marketDataSchema);
