@@ -1,4 +1,41 @@
-require("../config/config");
+const amqp = require('amqplib/callback_api'),
+conn = require('./connect');
+
+const QUEUE_NAME = process.env.QUEUE_NAME
+
+class Subscriber {
+
+receiveMessage() {
+    conn.getChannel().then( (ch) =>{
+        ch.consume(QUEUE_NAME, function(msg){
+          console.log(`${msg} get from the queue ${QUEUE_NAME}`);
+          return new Promise((resolve,reject)=>{
+            resolve(msg);
+          });
+        },{noAck:false});
+        
+    }).catch((e) =>{
+        reportErrors(e);
+    });        
+}
+
+reportErrors(err){  
+    console.log(err.stack);
+};
+}
+
+module.exports = Subscriber; 
+
+
+
+
+
+
+
+
+
+
+
 const amqp = require('amqplib/callback_api');
 const {save} = require("../service/notification-service");
 
