@@ -1,0 +1,10 @@
+{
+    "test":{
+        "PORT":3010,
+        "SERVICE_TIMEOUT":30 
+    },
+    "development":{
+        "PORT":3010,
+        "SERVICE_TIMEOUT":30     
+    }
+}

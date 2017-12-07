@@ -1,0 +1,19 @@
+{
+  "name": "service-registry",
+  "version": "1.0.0",
+  "description": "service registry",
+  "main": "run.js",
+  "scripts": {
+    "start": "nodemon bin/run.js",
+    "start-watch":"nodemon --exec \"npm start\"",
+    "test": "export NODE_ENV=test || set NODE_ENV=\"test\" && echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.5"
+  }
+}
