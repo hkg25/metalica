@@ -12,8 +12,8 @@ export default class Header extends Component{
         return(
             <div>
                 <NavLink to="/" exact className="button" activeClassName="success"> TRADES </NavLink>
-                <NavLink to="/cart" className="button" activeClassName="success"> TRANSFERS </NavLink>
-                <NavLink to="/not-found-here" className="button" activeClassName="success"> TRANSPORTS </NavLink>
+                <NavLink to="/transfers" className="button" activeClassName="success"> TRANSFERS </NavLink>
+                <NavLink to="/transports" className="button" activeClassName="success"> TRANSPORTS </NavLink>
             </div>
         )
     }
