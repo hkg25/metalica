@@ -40,7 +40,7 @@ class Header extends Component{
                         onChange={this.handleChange}
                         indicatorColor="primary"
                         textColor="primary"
-                        centered >
+                     >
                     <Tab label="TRADES">
                         <NavLink to="/" exact className="button" activeClassName="success"/>
                     </Tab>

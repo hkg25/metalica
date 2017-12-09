@@ -3,15 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import keycode from 'keycode';
-import Table, {
-  TableBody,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TablePagination,
-  TableRow,
-  TableSortLabel,
-} from 'material-ui/Table';
+import Table, {TableBody,TableCell,TableFooter,TableHead,TablePagination,TableRow,TableSortLabel} from 'material-ui/Table';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
@@ -198,7 +190,7 @@ class EnhancedTable extends React.Component {
         createData('22/03/17', 'AL','Buy', 300, 67.46,'Lorem','LDN'),
       ].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
       page: 0,
-      rowsPerPage: 10,
+      rowsPerPage: 7,
     };
   }
 
@@ -298,13 +290,13 @@ class EnhancedTable extends React.Component {
                     <TableCell padding="checkbox">
                       <Checkbox checked={isSelected} />
                     </TableCell>
-                    <TableCell padding="none">{n.tradeDate}</TableCell>
-                    <TableCell padding="none">{n.commodity}</TableCell>
-                    <TableCell padding="none">{n.side}</TableCell>
+                    <TableCell >{n.tradeDate}</TableCell>
+                    <TableCell >{n.commodity}</TableCell>
+                    <TableCell >{n.side}</TableCell>
                     <TableCell numeric>{n.qty}</TableCell>
                     <TableCell numeric>{n.price}</TableCell>
-                    <TableCell padding="none">{n.counterparty}</TableCell>
-                    <TableCell padding="none">{n.location}</TableCell>
+                    <TableCell >{n.counterparty}</TableCell>
+                    <TableCell >{n.location}</TableCell>
                     </TableRow>
                 );
               })}
