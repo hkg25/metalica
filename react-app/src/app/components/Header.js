@@ -5,6 +5,7 @@ import Paper from 'material-ui/Paper';
 import Tabs, {Tab} from 'material-ui/Tabs';
 import {NavLink} from "react-router-dom";
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import EnhancedTable from "./EnhancedTable";
 
 const customstyles = theme => ({
     root: {
@@ -51,6 +52,8 @@ class Header extends Component{
                     </Tab>
         </Tabs>
       </Paper>
+
+      <EnhancedTable/>
             </div>
         )
     }
