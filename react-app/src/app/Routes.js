@@ -17,7 +17,7 @@ export default function Routes(props){
         <Router>
             <App>
                 <Switch>
-                    <Route path="/" component={Trade}/>
+                    <Route path="/" exact component={Trade}/>
                     <Route path="/transfers" component={Transfers}/>
                     <Route path="/transports" component={Transport}/>
                     <Route/>   

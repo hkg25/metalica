@@ -20,7 +20,7 @@ function createData(tradeDate, commodity, side, qty, price, counterparty,locatio
 }
 
 const columnData = [
-  { id: 'tradeDate', numeric: false, disablePadding: true, label: 'TradeDate' },
+  { id: 'tradeDate', numeric: false, disablePadding: false, label: 'TradeDate' },
   { id: 'commodity', numeric: false, disablePadding: false, label: 'Commodity' },
   { id: 'side', numeric: false, disablePadding: false, label: 'Side' },
   { id: 'qty', numeric: true, disablePadding: false, label: 'QTY (MT)' },
@@ -49,13 +49,6 @@ class EnhancedTableHead extends React.Component {
     return (
       <TableHead>
         <TableRow>
-          <TableCell padding="checkbox">
-            <Checkbox
-              indeterminate={numSelected > 0 && numSelected < rowCount}
-              checked={numSelected === rowCount}
-              onChange={onSelectAllClick}
-            />
-          </TableCell>
           {columnData.map(column => {
             return (
               <TableCell
@@ -79,6 +72,15 @@ class EnhancedTableHead extends React.Component {
               </TableCell>
             );
           }, this)}
+
+          <TableCell padding="checkbox">
+            <Checkbox
+              indeterminate={numSelected > 0 && numSelected < rowCount}
+              checked={numSelected === rowCount}
+              onChange={onSelectAllClick}
+            />
+          </TableCell>
+
         </TableRow>
       </TableHead>
     );
@@ -285,11 +287,7 @@ class EnhancedTable extends React.Component {
                     aria-checked={isSelected}
                     tabIndex={-1}
                     key={n.id}
-                    selected={isSelected}
-                  >
-                    <TableCell padding="checkbox">
-                      <Checkbox checked={isSelected} />
-                    </TableCell>
+                    selected={isSelected}>
                     <TableCell >{n.tradeDate}</TableCell>
                     <TableCell >{n.commodity}</TableCell>
                     <TableCell >{n.side}</TableCell>
@@ -297,6 +295,9 @@ class EnhancedTable extends React.Component {
                     <TableCell numeric>{n.price}</TableCell>
                     <TableCell >{n.counterparty}</TableCell>
                     <TableCell >{n.location}</TableCell>
+                    <TableCell padding="checkbox">
+                    <Checkbox checked={isSelected} />
+                  </TableCell>
                     </TableRow>
                 );
               })}

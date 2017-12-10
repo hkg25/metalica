@@ -4,15 +4,33 @@ import {withStyles} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Tabs, {Tab} from 'material-ui/Tabs';
 import {NavLink} from "react-router-dom";
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import EnhancedTable from "./EnhancedTable";
+import SwipeableViews from 'react-swipeable-views';
+import Typography from 'material-ui/Typography';
 
-const customstyles = theme => ({
+import Trade from "./trade/Trade";
+import Transfer from "./transfer/Transfer";
+import Transport from "./transport/Transport";
+
+const styles = theme => ({
     root: {
+      //backgroundColor: theme.palette.background.paper,
       flexGrow: 1,
       marginTop: theme.spacing.unit * 3,
     },
   });
+
+  function TabContainer({ children, dir }) {
+    return (
+      <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+        {children}
+      </Typography>
+    );
+  }
+  
+  TabContainer.propTypes = {
+    children: PropTypes.node.isRequired,
+    dir: PropTypes.string.isRequired,
+  };
   
 
 class Header extends Component{
@@ -31,7 +49,7 @@ class Header extends Component{
     
 
     render(){
-        const { classes } = this.props;
+        const { classes, theme } = this.props;
         return(
             <div>
                 <Paper className={classes.root}>
@@ -41,19 +59,20 @@ class Header extends Component{
                         indicatorColor="primary"
                         textColor="primary"
                      >
-                    <Tab label="TRADES">
-                        <NavLink to="/" exact className="button" activeClassName="success"/>
-                    </Tab>
-                    <Tab label="TRANSFERS">
-                        <NavLink to="/transfers" className="button" activeClassName="success"/>
-                    </Tab>
-                    <Tab label="TRANSPORTS">
-                        <NavLink to="/transports" className="button" activeClassName="success"/>
-                    </Tab>
-        </Tabs>
-      </Paper>
+                        <Tab label="TRADES"/>
+                        <Tab label="TRANSFERS" disabled/>
+                        <Tab label="TRANSPORTS" disabled/>
+                    </Tabs>
+             </Paper>
 
-      <EnhancedTable/>
+             <SwipeableViews
+                    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                    index={this.state.value}
+                    onChangeIndex={this.handleChangeIndex}>
+                <TabContainer dir={theme.direction}><Trade/></TabContainer>
+                <TabContainer dir={theme.direction}><Transfer/></TabContainer>
+                <TabContainer dir={theme.direction}><Transport/></TabContainer>
+            </SwipeableViews>
             </div>
         )
     }
@@ -63,4 +82,4 @@ Header.propTypes = {
     classes: PropTypes.object.isRequired,
   };
   
-export default withStyles(customstyles) (Header);
+export default withStyles(styles, { withTheme: true }) (Header);
