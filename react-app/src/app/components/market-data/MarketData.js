@@ -17,8 +17,7 @@ export default class MarketData extends Component {
     render(){
         console.log("Market Data render called");
         return(
-            <div>
-                
+            <div className="width75">
             {
                  this.state.data.map((item) =>(
                     <MarketWidget key={item.id} item={item} />

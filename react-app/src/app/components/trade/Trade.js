@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import EnhancedTable from "../EnhancedTable";
 import TradeItem from "../trade/TradeItem";
+import Filter from "../Filter";
 
 export default class Trade extends Component{
 
@@ -12,6 +13,7 @@ export default class Trade extends Component{
         console.log("Trade render called");
         return(
             <div>
+                 <Filter/>
                 <span className="trade">
                     <EnhancedTable/>
                 </span>
