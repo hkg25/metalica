@@ -6,8 +6,10 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   request = require('superagent');
 
+
+const props = process.env;
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(props.MONGODB_URI);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -15,12 +17,12 @@ app.use(bodyParser.json());
 var routes = require('./api/routes/tradeListRoutes'); 
 routes(app);
 
-app.listen(process.env.PORT, () =>{  
-  console.log('Trade service api server started on: ' + process.env.PORT); 
+app.listen(props.PORT, () =>{  
+  console.log('Trade service api server started on: ' + props.PORT); 
   const announce = () => {
-    request.put(`${process.env.SERVICE_REGISTRY_ENDPOINT}/tradeService/${process.env.PORT}`, (err, response) =>{
+    request.put(`${props.SERVICE_REGISTRY_ENDPOINT}/${props.INTENT}/${props.PORT}`, (err, response) =>{
       if(err)
-        return console.log(`Error connecting to registry service ${process.env.SERVICE_REGISTRY_ENDPOINT} !`);
+        return console.log(`Error connecting to registry service ${props.SERVICE_REGISTRY_ENDPOINT} !`);
       console.log(JSON.stringify(response.body.result));
     });
   }

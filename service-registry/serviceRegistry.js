@@ -3,7 +3,7 @@
 class ServiceRegistry{
     constructor(){
         this._services = [];
-        this._timeout = process.env.SERVICE_TIMEOUT;
+        this._timeout = parseInt(process.env.SERVICE_TIMEOUT);
     }
 
     add(intent, ip, port){
@@ -28,6 +28,7 @@ class ServiceRegistry{
 
     remove(intent,ip,port){
         const key = intent+ip+port;
+        console.log(`Removing service for ${intent} running at ${ip}:${port}`);
         delete this._services[key];
     }
 
@@ -37,14 +38,13 @@ class ServiceRegistry{
             if(this._services[key].intent === intent)
                 return this._services[key];
         }
-        return null;
     }
 
     _cleanup(){
         const now = Math.floor(new Date() /1000);
         for(let key in this._services){
             if( this._services[key].timestamp + this._timeout < now){
-                console.log(`Removed service for intent ${this._services[key].intent}`);
+                console.log(`Removing service for intent ${this._services[key].intent}`);
                 delete this._services[key];
             }
         }

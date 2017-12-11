@@ -20,9 +20,13 @@ service.put('/registry/:intent/:port', (req,res,next) => {
 service.get('/registry/:intent', (req,res,next) => {
     const serviceIntent = req.params.intent;
     const result = serviceRegistry.get(serviceIntent);
-    if(result)
-        res.json({error:{message:`Failed to discover ${serviceIntent} api service !`}});    
-    res.json({response:{ip:result.ip,port:result.port}});
+    if(!result)
+        res.send({error:{message:`Failed to discover ${serviceIntent} api service !`}});  
+    else{
+        const {ip, port} = result;
+        console.log(`${serviceIntent} service is running at ${ip}:${port}`);  
+        res.send({ip,port});
+    }
 });
 
 service.delete('/registry/:intent/:port', (req,res,next) => {
