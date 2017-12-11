@@ -16,19 +16,15 @@ var routes = require('./api/routes/tradeListRoutes');
 routes(app);
 
 app.listen(process.env.PORT, () =>{  
-  console.log('trade list RESTful API server started on: ' + process.env.PORT); 
+  console.log('Trade service api server started on: ' + process.env.PORT); 
   const announce = () => {
     request.put(`${process.env.SERVICE_REGISTRY_ENDPOINT}/tradeService/${process.env.PORT}`, (err, response) =>{
-      if(err){
-        console.log(err);
-        console.log(`Error connecting to registry ${process.env.SERVICE_REGISTRY_ENDPOINT}`);
-        return;
-      }
-      console.log(response);
+      if(err)
+        return console.log(`Error connecting to registry service ${process.env.SERVICE_REGISTRY_ENDPOINT} !`);
+      console.log(JSON.stringify(response.body.result));
     });
   }
-
   announce();
-  setInterval(announce, 15*1000);
+  setInterval(announce, 25*1000);
 });
 
