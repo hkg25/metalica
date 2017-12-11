@@ -11,3 +11,7 @@
     float: right;
     display: inline-flex;
 }
+
+.tableCell{
+    padding: 4px 0px 0px 24px
+}
