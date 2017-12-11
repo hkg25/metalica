@@ -2,14 +2,19 @@
   "name": "api-gateway",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "run.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon bin/run.js",
+    "test": "export NODE_ENV=test || set NODE_ENV=\"test\" && echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "superagent": "^3.8.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.5"
   }
 }
