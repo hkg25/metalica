@@ -3,7 +3,7 @@
 const express = require('express');
 const service = express();
 
-const ServiceRegistry = require('./ServiceRegistry');
+const ServiceRegistry = require('./serviceRegistry');
 const serviceRegistry = new ServiceRegistry();
 
 service.put('/registry/:intent/:port', (req,res,next) => {
@@ -19,8 +19,12 @@ service.put('/registry/:intent/:port', (req,res,next) => {
 
 service.get('/registry/:intent', (req,res,next) => {
     const serviceIntent = req.params.intent;
-    const {ip,port} = serviceRegistry.get(serviceIntent);
-    res.json({result:{ip,port}});
+    const result = serviceRegistry.get(serviceIntent);
+    if(result){
+        res.json('');
+    }
+    
+    res.json({response:{ip:result.ip,port:result.port}});
 });
 
 service.delete('/registry/:intent/:port', (req,res,next) => {
