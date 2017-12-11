@@ -20,13 +20,13 @@ function createData(tradeDate, commodity, side, qty, price, counterparty,locatio
 }
 
 const columnData = [
-  { id: 'tradeDate', numeric: false, disablePadding: false, label: 'TradeDate' },
-  { id: 'commodity', numeric: false, disablePadding: false, label: 'Commodity' },
-  { id: 'side', numeric: false, disablePadding: false, label: 'Side' },
-  { id: 'qty', numeric: true, disablePadding: false, label: 'QTY (MT)' },
-  { id: 'price', numeric: true, disablePadding: false, label: 'Price (MT)' },
-  { id: 'counterparty', numeric: false, disablePadding: false, label: 'CounterParty'},
-  { id: 'location', numeric: false, disablePadding: false, label: 'Location'},
+  { id: 'tradeDate', numeric: false, disablePadding: true, label: 'TradeDate' },
+  { id: 'commodity', numeric: false, disablePadding: true, label: 'Commodity' },
+  { id: 'side', numeric: false, disablePadding: true, label: 'Side' },
+  { id: 'qty', numeric: true, disablePadding: true, label: 'QTY (MT)' },
+  { id: 'price', numeric: true, disablePadding: true, label: 'Price (MT)' },
+  { id: 'counterparty', numeric: false, disablePadding: true, label: 'CounterParty'},
+  { id: 'location', numeric: false, disablePadding: true, label: 'Location'},
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -45,13 +45,12 @@ class EnhancedTableHead extends React.Component {
 
   render() {
     const { onSelectAllClick, order, orderBy, numSelected, rowCount } = this.props;
-
     return (
       <TableHead>
         <TableRow>
           {columnData.map(column => {
             return (
-              <TableCell
+              <TableCell className='tableCell'
                 key={column.id}
                 numeric={column.numeric}
                 padding={column.disablePadding ? 'none' : 'default'}

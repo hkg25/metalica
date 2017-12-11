@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import MarketData from  "../components/market-data/MarketData"
+import ImageAvatars from "../components/ImageAvatar"
 
 export default class App extends Component {
     constructor(props) {
@@ -14,6 +15,7 @@ export default class App extends Component {
         return (
             <div> 
                <MarketData></MarketData>
+               {/* <ImageAvatars/> */}
                <Header></Header>
                <Footer> </Footer>
             </div>

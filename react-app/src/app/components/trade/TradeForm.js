@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
-import Checkbox from 'material-ui/Checkbox';
+import Radio, { RadioGroup } from 'material-ui/Radio';
 import { FormGroup, FormControlLabel,FormLabel } from 'material-ui/Form';
 
 
@@ -49,10 +49,12 @@ const locations = [
     {value: 'HKG',label: 'HKG'}
 ];
 
-class Filter extends React.Component {
+class TradeForm extends React.Component {
 
   state = {
     location : "LDN",
+    price: '',
+    qty: '',
     commodity : "AL",
     counterParty : "Lorem",
     tradeDate : "",
@@ -111,7 +113,7 @@ class Filter extends React.Component {
         {/* <FormLabel>Side</FormLabel> */}
         <FormControlLabel
           control={
-            <Checkbox
+            <Radio
               checked={this.state.buy}
               onChange={this.handleChange('buy')}
               value="buy"
@@ -121,7 +123,7 @@ class Filter extends React.Component {
         />
         <FormControlLabel
           control={
-            <Checkbox
+            <Radio
               checked={this.state.sell}
               onChange={this.handleChange('sell')}
               value="sell"
@@ -152,6 +154,33 @@ class Filter extends React.Component {
             </MenuItem>
           ))}
         </TextField>
+        <TextField required
+          id="price"
+          label="Price"
+          value={this.state.price}
+          onChange={this.handleChange('price')}
+          type="number"
+          className={classes.textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          margin="normal"
+          fullWidth
+        />
+         <TextField required
+          id="qty"
+          label="Quantity"
+          value={this.state.qty}
+          onChange={this.handleChange('qty')}
+          type="number"
+          className={classes.textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          margin="normal"
+          fullWidth
+        />
+
         <TextField
           id="select-location"
           select
@@ -179,8 +208,8 @@ class Filter extends React.Component {
   }
 }
 
-Filter.propTypes = {
+TradeForm.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Filter);
+export default withStyles(styles)(TradeForm);

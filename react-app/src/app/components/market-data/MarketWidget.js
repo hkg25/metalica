@@ -21,10 +21,6 @@ function MarketWidget(props) {
   const { classes } = props;
   let item = props.item;
 
-  console.log("Market widget props : " + props);
-  
-  console.log("Market widget item : " + item);
-
   return (
     <span>
       <Card className={classes.card}>

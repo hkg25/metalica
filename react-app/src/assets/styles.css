@@ -1,0 +1,37 @@
+.trade{
+   width:74%;
+   min-width:700px;
+   float: left;
+}
+
+.tradeItem{
+    padding-left: 2%;
+    width:24%;
+    min-width:300px;
+    float: right;
+    display: inline-flex;
+}
+
+.tableCell{
+    padding: 4px 0px 0px 24px
+}
+
+.formControl{
+    margin: 14px 0px 14px 0px;
+}
+
+.width75{
+    width:75%
+}
+
+.width25{
+    width:25%
+}
+
+.left {
+    float: left
+}
+
+.right {
+    float: right
+}
