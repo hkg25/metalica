@@ -1,8 +1,10 @@
 {
     "test":{
-        "PORT":3020
+        "PORT":3020,
+        "SERVICE_REGISTRY_ENDPOINT":"http://localhost:3010/registry/"
     },
     "development":{
-        "PORT":3020   
+        "PORT":3020,
+        "SERVICE_REGISTRY_ENDPOINT":"http://localhost:3010/registry/"   
     }
 }

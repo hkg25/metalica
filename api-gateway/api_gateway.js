@@ -5,14 +5,16 @@ const api_gateway = express();
 
 api_gateway.get('/:intent',(req,res,next) =>{
     const serviceIntent = req.params.intent;
-    console.log(`API gateway GET /${serviceIntent} method invoked!`);
-    request.get(`http://localhost:3010/registry/${serviceIntent}`).then((res) => {
-        if(res){
-            var serviceObj = {ip : res.ip, port : res.port};
-            request.get(`http://${ip}:${port}/api/${serviceIntent}`).then((result) =>{
-                res.json({result});
-            }); 
-        }
+    console.log(`${req.method} /${serviceIntent} request received !`);
+    request.get(`${SERVICE_REGISTRY_ENDPOINT}/${serviceIntent}`).then((result) => {
+        if(result)
+            res.json(`Failed to get service endpoint using service registry : ${SERVICE_REGISTRY_ENDPOINT} !`);
+        const {serviceIp, servicePort} = result;
+        request.get(`http://${serviceIp}:${servicePort}/api/${serviceIntent}`).then((result) =>{
+            if(result)
+                res.json(`Failed to get response from ${serviceIntent} api !`);
+            res.json({result});
+        }); 
     }).catch( (err) =>{
         res.json(err);
     });       
