@@ -1,12 +1,13 @@
-'use strict';
-require('../config/config')
-const http = require('http');
+require('../config/config.js')
+const express = require("express");
+const bodyParser = require("body-parser");
+const app = express();
 
-const api_gateway = require('../api_gateway');
-const server = http.createServer(api_gateway);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-server.listen(process.env.PORT);
+const routes = require("../routes/routes.js")(app);
 
-server.on('listening', () => {
-    console.log(`API gateway is listening on ${process.env.PORT}.`);
+const server = app.listen(process.env.PORT, () => {
+    console.log("API-Gateway listening on port %s...", server.address().port);
 });
