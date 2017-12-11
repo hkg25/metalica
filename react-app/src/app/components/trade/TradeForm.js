@@ -4,7 +4,8 @@ import { withStyles } from 'material-ui/styles';
 import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
 import Radio, { RadioGroup } from 'material-ui/Radio';
-import { FormLabel, FormControl, FormControlLabel, FormHelperText } from 'material-ui/Form';
+import { FormGroup, FormControlLabel,FormLabel } from 'material-ui/Form';
+
 
 const styles = theme => ({
   container: {
@@ -56,7 +57,9 @@ class TradeForm extends React.Component {
     qty: '',
     commodity : "AL",
     counterParty : "Lorem",
-    tradeDate : ""
+    tradeDate : "",
+    buy : true,
+    sell : false
   };
 
   handleChange = name => event => {
@@ -106,19 +109,29 @@ class TradeForm extends React.Component {
             </MenuItem>
           ))}
         </TextField>
-        <FormControl component="fieldset" required className='formControl' fullWidth>
-          <FormLabel component="legend">Side</FormLabel>
-          <RadioGroup
-            aria-label="side"
-            name="side"
-            className={classes.group}
-            value={this.state.value}
-            onChange={this.handleChange}
-          >
-            <FormControlLabel value="buy" control={<Radio />} label="Buy" />
-            <FormControlLabel value="sale" control={<Radio />} label="Sell" />
-        </RadioGroup>
-        </FormControl>
+        <FormGroup row>
+        {/* <FormLabel>Side</FormLabel> */}
+        <FormControlLabel
+          control={
+            <Radio
+              checked={this.state.buy}
+              onChange={this.handleChange('buy')}
+              value="buy"
+            />
+          }
+          label="Buy"
+        />
+        <FormControlLabel
+          control={
+            <Radio
+              checked={this.state.sell}
+              onChange={this.handleChange('sell')}
+              value="sell"
+            />
+          }
+          label="Sell"
+        />
+        </FormGroup>
         <TextField
           id="select-counterparty"
           select

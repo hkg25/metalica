@@ -1,12 +1,12 @@
 .trade{
-   width:70%;
+   width:74%;
    min-width:700px;
    float: left;
 }
 
 .tradeItem{
     padding-left: 2%;
-    width:28%;
+    width:24%;
     min-width:300px;
     float: right;
     display: inline-flex;
