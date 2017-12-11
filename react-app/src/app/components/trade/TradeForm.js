@@ -106,7 +106,7 @@ class TradeForm extends React.Component {
             </MenuItem>
           ))}
         </TextField>
-        <FormControl component="fieldset" required className={classes.formControl}>
+        <FormControl component="fieldset" required className='formControl' fullWidth>
           <FormLabel component="legend">Side</FormLabel>
           <RadioGroup
             aria-label="side"
