@@ -11,6 +11,7 @@ import Checkbox from 'material-ui/Checkbox';
 import IconButton from 'material-ui/IconButton';
 import Tooltip from 'material-ui/Tooltip';
 import DeleteIcon from 'material-ui-icons/Delete';
+import EditIcon from 'material-ui-icons/Edit';
 import FilterListIcon from 'material-ui-icons/FilterList';
 
 let counter = 0;
@@ -72,13 +73,9 @@ class EnhancedTableHead extends React.Component {
             );
           }, this)}
 
-          <TableCell padding="checkbox">
-            <Checkbox
-              indeterminate={numSelected > 0 && numSelected < rowCount}
-              checked={numSelected === rowCount}
-              onChange={onSelectAllClick}
-            />
-          </TableCell>
+           <TableCell className='action'>
+                Action
+           </TableCell>   
 
         </TableRow>
       </TableHead>
@@ -295,7 +292,16 @@ class EnhancedTable extends React.Component {
                     <TableCell >{n.counterparty}</TableCell>
                     <TableCell >{n.location}</TableCell>
                     <TableCell padding="checkbox">
-                    <Checkbox checked={isSelected} />
+                    <Tooltip title="Delete">
+                      <IconButton aria-label="Delete">
+                        <DeleteIcon />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Edit">
+                      <IconButton aria-label="Edit">
+                        <EditIcon />
+                      </IconButton>
+                    </Tooltip>
                   </TableCell>
                     </TableRow>
                 );
