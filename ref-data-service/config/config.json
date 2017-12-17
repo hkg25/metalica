@@ -1,10 +1,11 @@
 {
     "test":{
-
+		"PORT": 3000,
+        "MONGODB_URI":"mongodb://localhost:27017/RefsTestData"
     },
     "development":{
         "PORT": 3000,
-        "MONGODB_URI":"localhost",
+        "MONGODB_URI":"mongodb://localhost:27017/RefsData",
         "EUREKA_SERVER_HOST":"localhost"
     }
 }
