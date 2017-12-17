@@ -5,6 +5,7 @@ import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
 import Radio, { RadioGroup } from 'material-ui/Radio';
 import { FormGroup, FormControlLabel,FormLabel } from 'material-ui/Form';
+import Button from 'material-ui/Button';
 
 
 const styles = theme => ({
@@ -28,6 +29,12 @@ const styles = theme => ({
   },
   group: {
     margin: `${theme.spacing.unit}px 0`,
+  },
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
   }
 });
 const counterParties = [
@@ -203,6 +210,12 @@ class TradeForm extends React.Component {
             </MenuItem>
           ))}
         </TextField>
+        <Button raised className={classes.button}>
+             Cancel
+        </Button>
+       <Button raised color="primary" className={classes.button}>
+            Save
+       </Button>
       </form>
     );
   }

@@ -5,6 +5,7 @@ import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
 import { FormGroup, FormControlLabel,FormLabel } from 'material-ui/Form';
+import Button from 'material-ui/Button';
 
 
 const styles = theme => ({
@@ -28,6 +29,12 @@ const styles = theme => ({
   },
   group: {
     margin: `${theme.spacing.unit}px 0`,
+  },
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
   }
 });
 const counterParties = [
@@ -71,7 +78,7 @@ class Filter extends React.Component {
 
     return (
       <form className={classes.container} noValidate autoComplete="off">
-        <TextField required
+        <TextField
           id="tradeDate"
           label="Trade Date"
           type="date"
@@ -99,7 +106,6 @@ class Filter extends React.Component {
           }}
           margin="normal"
           fullWidth
-          //helperText="Please select your commodity"
         >
           {commodities.map(option => (
             <MenuItem key={option.value} value={option.value}>
@@ -108,7 +114,6 @@ class Filter extends React.Component {
           ))}
         </TextField>
         <FormGroup row>
-        {/* <FormLabel>Side</FormLabel> */}
         <FormControlLabel
           control={
             <Checkbox
@@ -144,7 +149,6 @@ class Filter extends React.Component {
           }}
           margin="normal"
           fullWidth
-          //helperText="Please select your counterparty"
         >
           {counterParties.map(option => (
             <MenuItem key={option.value} value={option.value}>
@@ -166,7 +170,6 @@ class Filter extends React.Component {
           }}
           margin="normal"
           fullWidth
-          //helperText="Please select your counterparty"
         >
           {locations.map(option => (
             <MenuItem key={option.value} value={option.value}>
@@ -174,7 +177,14 @@ class Filter extends React.Component {
             </MenuItem>
           ))}
         </TextField>
+        <Button raised className={classes.button}>
+             Clear
+        </Button>
+       <Button raised color="primary" className={classes.button}>
+            Search
+       </Button>
       </form>
+         
     );
   }
 }
