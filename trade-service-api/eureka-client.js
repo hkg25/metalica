@@ -2,16 +2,16 @@ const Eureka = require('eureka-js-client').Eureka
 
 const client = new Eureka({
   instance: {
-    app: 'myapp',
+    app: 'trade-service',
     hostName: 'localhost',
     ipAddr: '127.0.0.1',
-    statusPageUrl: `http://localhost:${process.env.port}`,
-    healthCheckUrl: `http://localhost:${process.env.port}/health`,
+    statusPageUrl: `http://localhost:${process.env.PORT}`,
+    healthCheckUrl: `http://localhost:${process.env.PORT}/health`,
     port: {
-      '$': process.env.port,
+      '$': process.env.PORT,
       '@enabled': 'true'
     },
-    vipAddress: 'myvip',
+    vipAddress: 'matellica.com/trade-service',
     dataCenterInfo: {
       '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
       name: 'MyOwn'
