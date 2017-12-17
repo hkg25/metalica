@@ -1,32 +1,25 @@
-require('./config/config');
-const app = require('express')();
-const mongoose = require('mongoose'); 
-const bodyParser = require('body-parser');
-const request = require('superagent');
+require('./config/config')
+require('./model/market-data')
 
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI);
-require('./model/market-data');
+const app = require('express')()
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+const eurekaClient = require('./eureka-client')
 
-var routes = require('./routes/market-data-route'); 
-routes(app);
+mongoose.Promise = global.Promise
+mongoose.connect(process.env.MONGODB_URI)
 
-app.listen(process.env.PORT, () =>{  
-  console.log(`Market Data service is running on ${process.env.PORT}`);
-  const announce = () => {
-    request.put(`${process.env.SERVICE_REGISTRY_ENDPOINT}/marketService/${process.env.PORT}`, (err, response) =>{
-    if(err){
-      console.log(err);
-      console.log(`Error connecting to registry ${process.env.SERVICE_REGISTRY_ENDPOINT}`);
-      return;
-    }
-    console.log(response);
-    });
-  }
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
-  announce();
-  setInterval(announce, 15*1000);  
-});
+var routes = require('./routes/market-data-route')
+routes(app)
+
+let server = app.listen(process.env.PORT, (err) => {
+  if (err) return console.log(`Unable to start the market data service api ${err}`)
+  console.log(`Market data service started on ${server.address().address}:${server.address().port}`)
+  eurekaClient.start(function (error) {
+    console.log(error || 'complete')
+  })
+})
