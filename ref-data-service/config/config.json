@@ -1,0 +1,10 @@
+{
+    "test":{
+
+    },
+    "development":{
+        "PORT": 3000,
+        "MONGODB_URI":"localhost",
+        "EUREKA_SERVER_HOST":"localhost"
+    }
+}
