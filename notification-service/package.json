@@ -2,7 +2,7 @@
   "name": "notification-service",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./api/server.js",
@@ -15,8 +15,8 @@
     "amqplib": "^0.5.2",
     "express": "^4.16.2",
     "lodash": "^4.17.4",
-    "mongodb": "^2.2.33",
     "mongoose": "^4.13.6",
-    "socket.io": "^2.0.4"
+    "socket.io": "^2.0.4",
+    "eureka-js-client": "^4.3.0"
   }
 }
