@@ -1,32 +1,28 @@
-require('./config/config');
-const express = require('express'),
-  app = express(),
-  mongoose = require('mongoose'),
-  Trade = require('./api/models/tradeListModel'),  
-  bodyParser = require('body-parser'),
-  request = require('superagent');
+require('./config/config')
+require('./api/models/counterModel')
+require('./api/models/tradeListModel')
 
+const express = require('express')
+const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 
-const props = process.env;
-mongoose.Promise = global.Promise;
-mongoose.connect(props.MONGODB_URI);
+const eurekaClient = require('./eureka-client')
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+const props = process.env
+mongoose.Promise = global.Promise
+mongoose.connect(props.MONGODB_URI)
 
-var routes = require('./api/routes/tradeListRoutes'); 
-routes(app);
+const app = express()
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
-app.listen(props.PORT, () =>{  
-  console.log('Trade service api server started on: ' + props.PORT); 
-  const announce = () => {
-    request.put(`${props.SERVICE_REGISTRY_ENDPOINT}/${props.INTENT}/${props.PORT}`, (err, response) =>{
-      if(err)
-        return console.log(`Error connecting to registry service ${props.SERVICE_REGISTRY_ENDPOINT} !`);
-      console.log(JSON.stringify(response.body.result));
-    });
-  }
-  announce();
-  setInterval(announce, 25*1000);
-});
+var routes = require('./api/routes/tradeListRoutes')
+routes(app)
 
+var server = app.listen(props.PORT, (err) => {
+  if (err) return console.log(`Unable to start the trade service api ${err}`)
+  console.log(`Trade service api started on ${server.address().address}:${server.address().port}`)
+  eurekaClient.start(function (error) {
+    console.log(error || 'complete')
+  })
+})

@@ -13,9 +13,9 @@
     "nodemon": "^1.12.1"
   },
   "dependencies": {
-    "amqplib": "^0.5.2",
     "express": "^4.16.2",
     "mongoose": "^4.13.6",
-    "superagent": "^3.8.2"
+    "amqplib": "^0.5.2",
+    "eureka-js-client": "^4.3.0"
   }
 }
