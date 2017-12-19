@@ -2,7 +2,7 @@ const Eureka = require('eureka-js-client').Eureka
 
 const client = new Eureka({
   instance: {
-    app: 'trade-service',
+    app: 'trades',
     hostName: 'localhost',
     ipAddr: '127.0.0.1',
     statusPageUrl: `http://localhost:${process.env.PORT}`,
