@@ -6,11 +6,11 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import {
     TRADE_SIDES
-} from './default.js';
+} from '../../utils/default';
 
 import {
     convertToHtmlDate, convertToUserDate, dropDownItems
-} from './utils.js';
+} from '../../utils/utils.js';
 
 const styles = theme => ({
     root: {
