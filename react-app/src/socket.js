@@ -3,8 +3,8 @@ const  socket = openSocket('http://localhost:3005');
 
 socket.on("connect", () => {
   console.log("Matallica connected with notification service");
-//  tradesEvent();
-//  marketDataEvents();
+  //tradesEvent();
+  //marketDataEvents();
 });
 
 function tradesEvent(cb) {
