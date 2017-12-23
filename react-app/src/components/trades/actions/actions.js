@@ -3,31 +3,31 @@ import tradesService from '../../../services/tradesService';
 import refDataService from '../../../services/refDataService';
 
 export const cancelSave = () => {
-    return { type: ActionTypes.CANCEL_SAVE }
+    return { type: 'CANCEL_SAVE' }
 }
 
 export const clearTradeFilters = (obj) => {
-    return { type: ActionTypes.CLEAR_TRADE_FILTERS }
+    return { type: 'CLEAR_TRADE_FILTERS' }
 }
 
 export const createNewAction = (trade) => {
-    return { type: ActionTypes.CREATE_NEW, trade }
+    return { type: 'CREATE_NEW', trade }
 }
 
 export const editTrade = (id) => {
-    return { type: ActionTypes.EDIT_TRADE, payload: id }
+    return { type: 'EDIT_TRADE', payload: id }
 }
 
 export const filterTrades = (obj) => {
-    return { type: ActionTypes.FILTER_TRADES }
+    return { type: 'FILTER_TRADES' }
 }
 
 export const selectTrade = (id) => {
-    return { type: ActionTypes.SELECT_TRADE, payload: id }
+    return { type: 'SELECT_TRADE', payload: id }
 }
 
 export const sortTrades = (key) => {
-    return { type: ActionTypes.SORT_TRADES, payload: key }
+    return { type: 'SORT_TRADES', payload: key }
 }
 
 

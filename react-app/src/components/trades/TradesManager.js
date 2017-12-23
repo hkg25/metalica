@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
 
 import * as tradeActions from './actions/actions';
-//import load from "./actions/load"
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import TradeHistoryTable from './TradeHistoryTable';

@@ -11,6 +11,14 @@ function loadCounterparties() {
   }
   
   function load(typeToBeLoaded){
+
+    // var response = await fetch('http://localhost:3001/service/details/refData');
+    // if (!response.ok) {
+    //   throw new Error('Service registry seems to be down');
+    // }
+    // var returnedValue = response.json();
+    // var data = await fetch(`http://${returnedValue.ip}:${returnedValue.port}/refData/${typeToBeLoaded}`);
+
     return fetch('http://localhost:3001/service/details/refData')
       .then(function(response) {
         if (!response.ok) {

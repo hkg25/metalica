@@ -8,13 +8,13 @@ import TradeDetailsHeader from './TradeDetailsHeader';
 
 import {
     convertToHtmlDate, convertToUserDate, dropDownItems
-} from './utils';
+} from '../../utils/utils.js';
 
-import CurrencyNumberFormat from './currencyFormat.js';
+import CurrencyNumberFormat from '../../utils/currencyFormat.js';
 
 import {
     TRADE_SIDES
-} from './default.js';
+} from '../../utils/default.js';
 
 const styles = theme => ({
     root: {

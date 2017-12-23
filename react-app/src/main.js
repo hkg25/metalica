@@ -7,7 +7,7 @@ import { blueGrey, amber} from 'material-ui/colors';
 import Trades from './components/trades/TradesManager.js';
 import Header from './components/commons/Header.js';
 import UpComingTab from './components/commons/UpcomingPage.js';
-// import TradeNotificationsTable from './Notifications/TradeNotificationsTable.js';
+import TradeNotificationTable from './components/notifications/TradeNotificationTable';
 import MarketDataList from './components/market-data/MarketDataList.js';
 
 const styles = theme => ({
@@ -52,7 +52,7 @@ class MainApp extends React.Component {
 					>
                     <div style={{ flexGrow: 1, width: "100%", margin: "0 auto" }}>
                          <Trades/>
-                        {/*<TradeNotificationsTable/> */}
+                        <TradeNotificationTable/>
                     </div>
                     <UpComingTab classes className={classes.underConstruction1}
                         text="Transfers page is under construction."
