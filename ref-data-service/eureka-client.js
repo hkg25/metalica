@@ -11,7 +11,7 @@ const client = new Eureka({
       '$': process.env.PORT,
       '@enabled': 'true'
     },
-    vipAddress: 'matellica.com/ref-data-service',
+    vipAddress: 'ref-data-service',
     dataCenterInfo: {
       '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
       name: 'MyOwn'

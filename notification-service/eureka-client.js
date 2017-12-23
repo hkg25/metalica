@@ -11,7 +11,7 @@ const client = new Eureka({
       '$': process.env.PORT,
       '@enabled': 'true'
     },
-    vipAddress: 'matellica.com/notification-service',
+    vipAddress: 'notification-service',
     dataCenterInfo: {
       '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
       name: 'MyOwn'
