@@ -4,8 +4,8 @@
         "MONGODB_URI" : "mongodb://localhost:27017/MarketTestData"
     },
     "development":{
-        "PORT": 3000,
+        "PORT": 3002,
         "EUREKA_SERVER_HOST":"localhost",
-        "MONGODB_URI": "mongodb://localhost:27017/MarketsData"
+        "MONGODB_URI": "mongodb://localhost:27017/MarketData"
     }
 }

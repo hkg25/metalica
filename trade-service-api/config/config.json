@@ -1,7 +1,7 @@
 {
     "test":{
         "PORT":3000,
-        "MONGODB_URI": "mongodb://localhost:27017/TradeTestDB",
+        "MONGODB_URI": "mongodb://localhost:27017/TradeTestData",
         "BROKER_URL":"amqp://localhost",
         "QUEUE":"notification-queue",
         "EUREKA_SERVER_HOST":"localhost",
@@ -9,7 +9,7 @@
     },
     "development":{
         "PORT":3000,
-        "MONGODB_URI": "mongodb://localhost:27017/TradeDB",
+        "MONGODB_URI": "mongodb://localhost:27017/TradeData",
         "BROKER_URL":"amqp://localhost",
         "QUEUE":"notification-queue",
         "EUREKA_SERVER_HOST":"localhost",
