@@ -1,13 +1,10 @@
 //const config = require('Config');
-const basePath = "http://localhost:9000/api/";
+const basePath = "http://localhost:9090/api/";
 const url = basePath + "trade-service/trades";
 
 function load(){
     return fetch(url)
       .then(function(response) {
-        if (!response.ok) {
-          throw new Error('Service registry seems to be down');
-        }
         return response.json();
       }).catch(function(err) {
            console.log("Unable to fetch trades.", err);
@@ -18,9 +15,6 @@ function load(){
   function deleteTrade(id) {
     return fetch(`${url}/${id}`,{method:'delete'})
       .then(function(response) {
-        if (!response.ok) {
-          throw new Error('Service registry seems to be down');
-        }
         return response.json();
       }).catch(function(err) {
            console.log("Unable to delete trade " + id, err);
@@ -37,9 +31,6 @@ function load(){
        },
       body:JSON.stringify(trade)
     }).then(function(response) {
-        if (!response.ok) {
-          return Promise.reject(response.text());
-        }
         return response.json();
       }).catch(function(err) {
            console.log("Unable to create new trade ", err);
@@ -56,9 +47,6 @@ function load(){
        },
       body:JSON.stringify(trade)
     }).then(function(response) {
-        if (!response.ok) {
-          return Promise.reject(response.text());
-        }
         return response.json();
       }).catch(function(err) {
            console.log("Unable to update trade " + trade.id, err);

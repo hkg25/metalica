@@ -4,6 +4,12 @@ var router = express.Router();
 const {Commodity} = require("../models/commodity");
 const _ = require("lodash");
 
+router.all('*', function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 
 router.get('/', function(req, res, next) {
     Commodity.find({}).then((commodities)=>{
