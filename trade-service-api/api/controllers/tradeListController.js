@@ -32,7 +32,7 @@ exports.read_a_trade = function(req, res) {
 };
 
 exports.update_a_trade = function(req, res) {
-  Trade.findOneAndUpdate({_id: req.params.tradeId}, req.body, {new: true}, function(err, trade) {
+  Trade.findOneAndUpdate({id: req.params.tradeId}, req.body, {new: true}, function(err, trade) {
     if (err)
       res.send(err);
     var publisher = new Publisher(JSON.stringify({obj:trade, op:'Update', source:'Trade Service',msg:'A trade has been updated!'}));
@@ -43,7 +43,7 @@ exports.update_a_trade = function(req, res) {
 
 exports.delete_a_trade = function(req, res) {
   Trade.remove({
-    _id: req.params.tradeId
+    id: req.params.tradeId
   }, function(err, trade) {
     if (err)
       res.send(err);

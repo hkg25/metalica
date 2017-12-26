@@ -48,7 +48,7 @@ function load(){
   }
   
   function update(trade){
-    return fetch(`${url}`, {
+    return fetch(`${url}/${trade.id}`, {
       method:'put',
       headers: {
          'Accept': 'application/json',
