@@ -16,12 +16,16 @@ function loadCommodities() {
   
 function load(type){
     return fetch(`${url}/${type}`)
-      .then(function(response) {
-        return response.json();
-      }).catch(function(err) {
-           console.log(`Unable to fetch ${type}`, err);
-         return Promise.reject();
-      });
+          .then(function(response) {
+              if (!response.ok) {
+                throw new Error('Reference data service seems to be down');
+              }               
+              return response.json();
+           }).
+           catch(function(err) {
+             console.log(`Unable to fetch ${type}`, err);
+            return Promise.reject();
+          });
 }
     
 let refDataService = {

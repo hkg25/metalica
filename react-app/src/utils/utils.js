@@ -12,7 +12,7 @@ export const convertToUserDate = (inputDate) => {
 
 
 export const dropdownWithBlankOption = (options = [], blankValueLabel = "") => {
-    const menuOptions = [{ code: "", name: blankValueLabel }, ...options];
+    const menuOptions = [{ code: "", title: blankValueLabel }, ...options];
     return dropDownItems(menuOptions);
 }
 
@@ -20,7 +20,7 @@ export const dropDownItems = (options = []) => {
     const dropDownList = options.map(function (option) {
         return (
             <MenuItem key={option.code} value={option.code} >
-                {`${option.name}`}
+                {`${option.title}`}
             </MenuItem>
         );
     });

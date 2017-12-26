@@ -116,9 +116,6 @@ class TradeDetails extends React.Component {
     }
 
     render() {
-        console.log("refdata:" + locations);
-        console.log("refdata:" + counterparties);
-        console.log("refdata:" + commodities);
         const { classes, actionToBePerformed, saveTrade, editTrade, locations, counterparties, commodities } = this.props;
         const editMode = this.state.editMode || (this.props.actionToBePerformed === 'Create_New');
 
