@@ -1,5 +1,4 @@
 require('./config/config')
-require('./api/models/counterModel')
 require('./api/models/tradeListModel')
 
 const express = require('express')

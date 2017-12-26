@@ -146,7 +146,7 @@ class TradeDetails extends React.Component {
                         <TextField select id="side" label="Side" margin="dense"
                             className={classes.textField}
                             disabled={!editMode}
-                            value={selectedTradeWithChangedTradeDate.side}
+                            value={selectedTradeWithChangedTradeDate.side.toUpperCase()}
                             onChange={this.handleChange('side', selectedTradeWithChangedTradeDate)}
                         >
                             {dropDownItems(TRADE_SIDES)}

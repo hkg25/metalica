@@ -14,23 +14,19 @@ var TradeSchema = new Schema({
     type: Number,
     required: 'Please enter the quantity of the trade'
   },
-  trade_date: {
+  tradeDate: {
     type: Date,
     default: Date.now
   },
   status: {
-    type: [{
       type: String,
-      enum: ['Open', 'Nominated']
-    }],
-    default: ['Open']
+      enum: ['Open', 'Nominated'],
+      default: 'Open'
   },
   side: {
-    type: [{
       type: String,
-      enum: ['BUY', 'SELL']
-    }],
-    required: 'Please enter the side of the trade'
+      enum: ['BUY', 'SELL'],
+      required: 'Please enter the side of the trade'
   },
   commodity: {
     type: String,
@@ -58,8 +54,6 @@ var TradeSchema = new Schema({
     required: 'Please enter the price of the trade'
   }
 })
-
-var Counter = mongoose.model('Counter')
 
 TradeSchema.pre('save', function (next) {
   var doc = this
