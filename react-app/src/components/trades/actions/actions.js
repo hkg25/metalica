@@ -118,7 +118,7 @@ export function load() {
 			.load()
 			.then(trades => dispatch({
 				type : 'LOAD',
-				payload : trades
+				payload : trades.trades
 			}))
 			.then(() => dispatch({
 				type : 'DONE'
