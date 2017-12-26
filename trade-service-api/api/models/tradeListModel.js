@@ -1,14 +1,16 @@
 'use strict'
 const mongoose = require('mongoose'),
-  Schema = mongoose.Schema
+  Schema = mongoose.Schema;
+
+const nextTradeIdSequence  = require('../db/tradeIdGenerator');  
 
 var TradeSchema = new Schema({
-  _id: {
+  id: {
     type: Number,
     index: true,
     unique: true
   },
-  quantity: {
+  qty: {
     type: Number,
     required: 'Please enter the quantity of the trade'
   },
@@ -30,23 +32,23 @@ var TradeSchema = new Schema({
     }],
     required: 'Please enter the side of the trade'
   },
-  commodity_code: {
+  commodity: {
     type: String,
-    required: 'Please enter the commodity_code of the trade',
+    required: 'Please enter the commodity of the trade',
     trim: true,
     minlength: 2,
     uppercase: true
   },
-  counterparty_code: {
+  counterparty: {
     type: String,
-    required: 'Please enter the counterparty_code of the trade',
+    required: 'Please enter the counterparty of the trade',
     trim: true,
     minlength: 2,
     uppercase: true
   },
-  location_code: {
+  location: {
     type: String,
-    required: 'Please enter the location_code of the trade',
+    required: 'Please enter the location of the trade',
     trim: true,
     minlength: 2,
     uppercase: true
@@ -61,11 +63,10 @@ var Counter = mongoose.model('Counter')
 
 TradeSchema.pre('save', function (next) {
   var doc = this
-  Counter.findByIdAndUpdate({_id: 'tradeSeqId'}, {$inc: {seq: 1}}, {new: true}, (error, updatedCounter) => {
-    if (error) return next(error)
-    doc._id = updatedCounter.seq
-    next()
-  })
+  nextTradeIdSequence(function(nextId) {
+    doc.id = nextId;
+    next();
+  });
 })
 
 module.exports = mongoose.model('Trades', TradeSchema)
