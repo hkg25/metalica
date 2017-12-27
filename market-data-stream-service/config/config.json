@@ -1,11 +1,9 @@
 {
     "test":{
-        "PORT" : 3000,
-        "MONGODB_URI" : "mongodb://localhost:27017/MarketTestData"
+        "PORT" : 3000
     },
     "development":{
         "PORT": 3002,
-        "EUREKA_SERVER_HOST":"localhost",
-        "MONGODB_URI": "mongodb://localhost:27017/MarketData"
+        "CLOUDAMQP_URL":"amqp://guest:guest@localhost"
     }
 }
