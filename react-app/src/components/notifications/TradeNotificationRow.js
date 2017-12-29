@@ -1,17 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
-import classNames from 'classnames';
-import keycode from 'keycode';
 import { withStyles } from 'material-ui/styles';
 import { orange } from 'material-ui/colors';
 import { TableRow, TableCell } from 'material-ui/Table';
 import Typography from 'material-ui/Typography';
-import Checkbox from 'material-ui/Checkbox';
-import Tooltip from 'material-ui/Tooltip';
-import IconButton from 'material-ui/IconButton';
-import DeleteIcon from 'material-ui-icons/Delete';
-import FilterListIcon from 'material-ui-icons/FilterList';
 
 const rowStyles = theme => ({
     selected: {
