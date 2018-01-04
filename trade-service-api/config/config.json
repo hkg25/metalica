@@ -1,5 +1,5 @@
 {
-    "test":{
+    "test ":{
         "PORT":3003,
         "MONGODB_URI": "mongodb://localhost:27017/TradeTestData",
         "BROKER_URL":"amqp://localhost",

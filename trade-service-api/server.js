@@ -25,3 +25,5 @@ var server = app.listen(props.PORT, (err) => {
     console.log(error || 'complete')
   })
 })
+
+module.exports = {app}
