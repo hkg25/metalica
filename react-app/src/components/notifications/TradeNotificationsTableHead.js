@@ -1,10 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from 'material-ui/styles';
-import { TableCell, TableHead, TableFooter, TableRow, TableSortLabel } from 'material-ui/Table';
-import Checkbox from 'material-ui/Checkbox';
-import Tooltip from 'material-ui/Tooltip';
+import { TableCell, TableHead, TableRow, TableSortLabel } from 'material-ui/Table';
 import _ from 'lodash';
 
 const TradeNotificationsTableColumns = [

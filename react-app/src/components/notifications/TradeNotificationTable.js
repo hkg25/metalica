@@ -1,16 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from 'material-ui/styles';
 import Table, {
-    TableBody, TableCell, TableFooter, TableRow, TablePagination, TableSortLabel
+    TableBody, TableFooter, TableRow, TablePagination
 } from 'material-ui/Table';
 import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
-import Checkbox from 'material-ui/Checkbox';
 import Toolbar from 'material-ui/Toolbar';
-import IconButton from 'material-ui/IconButton';
-import _ from 'lodash';
 import Grid from 'material-ui/Grid';
 import TradeNotificationRow from './TradeNotificationRow.js';
 import TradeNotificationsTableHead from './TradeNotificationsTableHead';

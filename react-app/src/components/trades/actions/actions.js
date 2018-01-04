@@ -35,7 +35,7 @@ export const saveTrade = (trade) => {
 		dispatch({
 			type : 'SAVING'
 		});
-		if (!trade.id || trade.id == -1) {
+		if (!trade.id || trade.id === -1) {
 			delete trade.id;
 			delete trade._id;
 			tradesService
