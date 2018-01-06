@@ -51,7 +51,7 @@ function UserAvatar(props) {
             <Tooltip id="tooltip-avatar" className={classes.avatar} title={username} placement="top">
                 <Avatar className={classes.orangeAvatar} src="/pics.jpg"></Avatar>
             </Tooltip>
-            <Button raised color="Primary" className={classes.button} onClick={auth.logout()}/>
+            {/* <Button raised color="Primary" className={classes.button} onClick={auth.logout()}/> */}
         </div>
     );
 }

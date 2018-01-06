@@ -1,5 +1,3 @@
-import * as ActionTypes from "../components/trades/actions/ActionTypes";
-
 const initialState = {
     isDescending: false,
     orderBy: 'tradeDate',

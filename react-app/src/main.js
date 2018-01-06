@@ -11,9 +11,9 @@ import UpComingTab from './components/commons/UpcomingPage.js';
 import TradeNotificationTable from './components/notifications/TradeNotificationTable';
 import MarketDataList from './components/market-data/MarketDataList.js';
 
-import Auth from './components/auth/Auth';
+//import Auth from './components/auth/Auth';
 
-const auth = new Auth();
+//const auth = new Auth();
 
 const styles = theme => ({
     root: {
@@ -32,6 +32,7 @@ const styles = theme => ({
         backgroundColor: blueGrey['300'],
     },
 });
+
 class MainApp extends React.Component {
 	state = {
 			value: 0,
@@ -41,20 +42,18 @@ class MainApp extends React.Component {
 			this.setState({ value });
     };
 
-    handleAuthentication = ({location}) => {
-        //if (/access_token|id_token|error/.test(location.hash)) {
-          auth.handleAuthentication();
-        //}
-    }
+    // handleAuthentication = ({location}) => {
+    //     //if (/access_token|id_token|error/.test(location.hash)) {
+    //       auth.handleAuthentication();
+    //     //}
+    // }
 
 	render() {
 			const { classes } = this.props;
             const { value } = this.state;
-            this.handleAuthentication(this.props);
+            //this.handleAuthentication(this.props);
 			return (
                 <div className={classes.root}>
-                    {
-                        auth.isAuthenticated() && (
                             <div>
                             <div style={{ flexGrow: 1, width: "100%", margin: "0 auto" }}>
                                 <MarketDataList/>
@@ -78,28 +77,9 @@ class MainApp extends React.Component {
                                 />
                             </SwipeableViews>
                             </div>
-                         )
-                    }
-
-                    {
-                        !auth.isAuthenticated() && (
-                            <div>
-                                <Button
-                                    id="qsLoginBtn"
-                                    bsStyle="primary"
-                                    className="btn-margin"
-                                    onClick={auth.login()}
-                                    >
-                                    Log In  
-                                </Button>
-
-                            </div>
-                        )
-                    }
-              </div>
-
-      );
-    }
+                  </div>
+                );
+           }
 }
 
-	export default withStyles(styles)(MainApp);
+export default withStyles(styles)(MainApp);

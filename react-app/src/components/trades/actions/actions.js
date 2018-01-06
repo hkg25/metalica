@@ -19,7 +19,8 @@ export const editTrade = (id) => {
 }
 
 export const filterTrades = (obj) => {
-    return { type: 'FILTER_TRADES' }
+	console.log(JSON.stringify(obj));
+    return { type: 'FILTER_TRADES',payload:obj }
 }
 
 export const selectTrade = (id) => {
