@@ -16,10 +16,7 @@ class App extends Component {
 
   render() {
     const { isAuthenticated } = this.props.auth;
-
-    console.log(isAuthenticated());
-
-    return (
+   return (
       <div>
         <Navbar fluid>
           <Navbar.Header>

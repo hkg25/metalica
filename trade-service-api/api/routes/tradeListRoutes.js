@@ -8,6 +8,22 @@ module.exports = function (app) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
   });
+
+  app.all("*",function(req,res,next){
+    //console.log(req);
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    console.log("trade service token is : " + token);
+      // decode token
+      if (token) {
+        next();
+      } else {
+        return res.status(403).send({ 
+            success: false, 
+            message: 'Authorization failed !!! Token is missing in headers' 
+        });
+    
+      }
+  });
   
   // tradeList Routes
   app.route('/trades').get(tradeList.list_all_trades).post(tradeList.create_a_trade)
