@@ -12,4 +12,4 @@ eureka:
       
 zuul:
   prefix: /api
-  sensitiveHeaders:
+  sensitiveHeaders: Cookie,Set-Cookie

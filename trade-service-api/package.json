@@ -20,9 +20,11 @@
     "supertest": "^2.0.0"
   },
   "dependencies": {
-    "express": "^4.16.2",
-    "mongoose": "^4.13.6",
     "amqplib": "^0.5.2",
-    "eureka-js-client": "^4.3.0"
+    "eureka-js-client": "^4.3.0",
+    "express": "^4.16.2",
+    "express-jwt": "^5.3.0",
+    "jwks-rsa": "^1.2.1",
+    "mongoose": "^4.13.6"
   }
 }
