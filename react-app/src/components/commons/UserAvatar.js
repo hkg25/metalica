@@ -45,18 +45,11 @@ const styles = theme => ({
 
 function UserAvatar(props) {
     const { classes, username } = props;
-    //const { isAuthenticated } = props.auth;
-   // let userNameToShow = username.split(' ').map(x => x[0]).join(''); // First letter of each word.
     return (
         <div className={classes.row}>
             <Tooltip id="tooltip-avatar" className={classes.avatar} title={username} placement="top">
                 <Avatar className={classes.orangeAvatar} src="/pics.jpg"></Avatar>
             </Tooltip>
-            {
-             //isAuthenticated() && (
-             <Button raised color="Primary" className={classes.button}/> 
-            //)
-        }
         </div>
     );
 }
