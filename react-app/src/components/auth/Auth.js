@@ -7,7 +7,7 @@ export default class Auth {
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
-    audience: `https://${AUTH_CONFIG.domain}/userinfo`,
+    audience: 'https://metallica-hkg.auth0.com/api/v2/',
     responseType: 'token id_token',
     scope: 'openid'
   });

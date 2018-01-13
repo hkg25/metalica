@@ -7,7 +7,6 @@ var jwtCheck = jwt({
     rateLimit: true,
     jwksRequestsPerMinute: 5,
     jwksUri: 'https://metallica-hkg.auth0.com/.well-known/jwks.json'
-
   }),
   audience: 'https://metallica-hkg.auth0.com/api/v2/',
   issuer: 'https://metallica-hkg.auth0.com/',

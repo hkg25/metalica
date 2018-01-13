@@ -2,19 +2,14 @@
 const basePath = 'http://localhost:9090/api/'
 const url = basePath + 'trade-service/trades'
 
-console.log(url)
-
-const access_token = localStorage.getItem('access_token')
-
-console.log(access_token)
+var access_token = localStorage.getItem('access_token')
 
 function load () {
-  // var myHeaders = new Headers()
-  // myHeaders.set('x-access-token', access_token)
-  return fetch(url, {
-    headers: { 'Authorization': `Bearer ${access_token}` }
+  return fetch(url,{
+    headers: { 'authorization': `Bearer ${access_token}`}
   })
     .then(function (response) {
+      console.log(response);
       if (!response.ok) {
         throw new Error('Trade data service seems to be down')
       }
