@@ -1,9 +1,30 @@
 import React, { Component } from 'react';
-import { Navbar, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
+import IconButton from 'material-ui/IconButton';
+import MenuIcon from 'material-ui-icons/Menu';
+
+const styles = {
+  root: {
+    width: '100%',
+  },
+  flex: {
+    flex: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  }
+};
 
 class App extends Component {
-  goTo(route) {
-    this.props.history.replace(`/${route}`)
+
+  constructor(props){
+    super(props);
   }
 
   login() {
@@ -16,27 +37,25 @@ class App extends Component {
 
   render() {
     const { isAuthenticated } = this.props.auth;
-   return (
-      <div>
-        <Navbar fluid>
-          <Navbar.Header>
-            {
-              !isAuthenticated() && (
-                  <Button
-                    id="qsLoginBtn"
-                    bsStyle="primary"
-                    className="btn-margin"
-                    onClick={this.login.bind(this)}
-                  >
-                    Log In
-                  </Button>
-                )
-            }
-          </Navbar.Header>
-        </Navbar>
-      </div>
-    );
+    const { classes } = this.props;
+    return (
+        !isAuthenticated() && (
+          <div className={classes.root}>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton className={classes.menuButton} color="contrast" aria-label="Menu">
+                <MenuIcon />
+              </IconButton>
+              <Typography type="title" color="inherit" className={classes.flex}>
+                Metallica
+              </Typography>
+              <Button color="contrast" onClick={this.login.bind(this)}>Login</Button>
+            </Toolbar>
+          </AppBar>        
+        </div>
+        )
+    )
   }
 }
 
-export default App;
+export default withStyles(styles)(App);

@@ -11,10 +11,6 @@ import UpComingTab from './components/commons/UpcomingPage.js';
 import TradeNotificationTable from './components/notifications/TradeNotificationTable';
 import MarketDataList from './components/market-data/MarketDataList.js';
 
-//import Auth from './components/auth/Auth';
-
-//const auth = new Auth();
-
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -42,16 +38,9 @@ class MainApp extends React.Component {
 			this.setState({ value });
     };
 
-    // handleAuthentication = ({location}) => {
-    //     //if (/access_token|id_token|error/.test(location.hash)) {
-    //       auth.handleAuthentication();
-    //     //}
-    // }
-
 	render() {
 			const { classes } = this.props;
             const { value } = this.state;
-            //this.handleAuthentication(this.props);
 			return (
                 <div className={classes.root}>
                             <div>
